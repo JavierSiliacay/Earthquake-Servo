@@ -1,0 +1,38 @@
+/*
+  ------------------------------------------------------------------------------
+  © 2025 Javier Siliacay | USTP Autotronics - All Rights Reserved.
+
+  This source code is the intellectual property of the author and is provided 
+  for educational and non-commercial use only. Unauthorized copying, modification, 
+  distribution, or use of this code for commercial purposes is strictly prohibited 
+  without prior written consent from the author.
+
+  Violation of these terms may result in legal action under applicable intellectual 
+  property laws.
+
+  For permissions, contact: github.com/javiersiliacay
+  ------------------------------------------------------------------------------
+*/
+
+#include <Servo.h>
+
+Servo quakeServo;
+
+void setup() {
+  Serial.begin(9600);
+  quakeServo.attach(9);            // Attach servo to pin 9
+  pinMode(A0, INPUT);              
+}
+
+void loop() {
+  int potValue = analogRead(A0);                       
+  int delayTime = map(potValue, 0, 1023, 169, 1000);    // Map to delay range
+
+  Serial.print("Intensity Delay: ");
+  Serial.println(delayTime);                           
+
+  quakeServo.write(180);                               
+  delay(delayTime);                                    // Delay based on intensity
+  quakeServo.write(0);                                 
+  delay(delayTime);                                    // Delay based on intensity
+}
