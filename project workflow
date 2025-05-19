@@ -1,0 +1,34 @@
+🔄 Workflow: Step-by-Step Process of the Code
+Initialization:
+
+Serial communication begins at 9600 baud for monitoring delay values.
+
+The servo motor is attached to digital pin 9.
+
+The potentiometer is configured as an input on analog pin A0.
+
+Main Loop Begins:
+
+The potentiometer reads an analog value between 0 and 1023.
+
+This value is mapped to a delay time between 169 ms (fast shaking) and 1000 ms (slow shaking).
+
+Serial Output:
+
+The mapped delay time is printed to the Serial Monitor for observation.
+
+Servo Movement:
+
+The servo moves to 180 degrees (full tilt).
+
+A delay occurs based on the mapped time.
+
+The servo moves to 0 degrees (opposite tilt).
+
+Another delay follows.
+
+This simulates a back-and-forth "shake" effect.
+
+Loop Repeats:
+
+The loop continuously updates servo behavior and delay time based on potentiometer position, creating a live-intensity simulation.
